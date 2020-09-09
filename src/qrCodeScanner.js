@@ -8,11 +8,13 @@ const qrResult = document.getElementById("qr-result");
 const outputData = document.getElementById("outputData");
 const btnScanQR = document.getElementById("btn-scan-qr");
 
+const copyResult = document.getElementById("copy-result");
+
 let scanning = false;
 
 qrcode.callback = res => {
   if (res) {
-    outputData.innerText = res;
+    outputData.value = res;
     scanning = false;
 
     video.srcObject.getTracks().forEach(track => {
@@ -24,6 +26,17 @@ qrcode.callback = res => {
     btnScanQR.hidden = false;
   }
 };
+
+copyResult.onclick = () => {
+  outputData.focus();
+  outputData.select();
+
+  const success = document.execCommand('copy');
+  
+  outputData.blur();
+
+  alert(success ? 'Copied!' : 'Failed');
+}
 
 btnScanQR.onclick = () => {
   navigator.mediaDevices
