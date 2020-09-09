@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "parcel index.html --open --out-dir docs",
-    "build": "parcel build index.html --out-dir docs"
+    "start": "parcel index.html --open --out-dir dist",
+    "build": "parcel build index.html --out-dir dist"
   },
   "dependencies": {},
   "devDependencies": {
